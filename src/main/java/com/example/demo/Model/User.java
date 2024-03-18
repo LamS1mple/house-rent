@@ -7,13 +7,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Lob;
-import jakarta.persistence.MappedSuperclass;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 
 @Entity
-@Data
 @Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Inheritance(strategy=InheritanceType.JOINED)
 public class User {
 	@Id
@@ -22,6 +27,12 @@ public class User {
 	
 	@Column	
 	private String ten;
+	
+	@Column(unique = true)
+	private String taiKhoan;
+	
+	@Column
+	private String matKhau;
 	
 	@Column
 	private String soDienThoai;
@@ -35,4 +46,9 @@ public class User {
 	@Lob
 	@Column(columnDefinition = "BLOB")
 	private byte[] photo;
+
+	
+	
+	
+	
 }

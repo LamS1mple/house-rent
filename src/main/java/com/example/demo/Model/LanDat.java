@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import java.sql.Date;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -7,38 +8,40 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Builder;
 import lombok.Data;
 
 @Entity
-@Table(name = "phongdat")
-@Data
 @Builder
-public class PhongDat {
+@Data
+@Table(name = "landat")
+public class LanDat {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private long id;
 	
 	@Column
-	private long tienCoc;
+	@Temporal(TemporalType.DATE)
+	private Date ngayDat;
 	
-	@ManyToOne
-	@JoinColumn(name = "phong_id")
-	private Phong phong;
+	@Column
+	private boolean trangThai;
 	
-	@OneToMany(mappedBy = "phongDat")
-	private List<ChiTietDichVu> danhSachChiTietDichVu;
+	@OneToMany(mappedBy = "lanDat")
+	private List<PhongDat> danhSachPhongDat;
 	
-	@ManyToOne
-	@JoinColumn(name = "lanDat_id")
-	private LanDat lanDat;
 	
 	@OneToOne
-	@JoinColumn(name = "hoaDon_id")
-	private HoaDon hoaDon;
+	@JoinColumn(name = "khachHang_id")
+	private KhachHang khachHang;
+	
+	@OneToOne(mappedBy = "lanDat")
+	private HopDong hopDong;
+	
 }

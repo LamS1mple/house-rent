@@ -1,6 +1,5 @@
 package com.example.demo.Model;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,23 +13,25 @@ import lombok.Data;
 @Entity
 @Data
 @Builder
-@Table(name = "chitettaisan")
-
-public class ChiTietTaiSan {
-
+@Table(name = "chitietdichvu")
+public class ChiTietDichVu {
 	@Id
 	@GeneratedValue
-	private int id;
+	private long id;
 	
 	@Column
-	private int soLuong;
+	private long soLuongCu;
+	
+	@Column
+	private long soLuongMoi;
 	
 	@ManyToOne
-	@JoinColumn(name = "taiSan_id")
-	private TaiSan taiSan;
+	@JoinColumn(name = "dichVu_id")
+	private DichVu dichVu;
 	
 	@ManyToOne
-	@JoinColumn(name = "phong_id")
-	private Phong phong;
+	@JoinColumn(name = "phongDat_id")
+	private PhongDat phongDat;
+	
 	
 }
