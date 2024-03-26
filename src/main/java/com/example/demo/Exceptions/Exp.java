@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 
 
-public class QuanLyExp extends RuntimeException {
+public class Exp extends RuntimeException {
 
 	/**
 	 * 
@@ -17,9 +17,9 @@ public class QuanLyExp extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	private String message;
 	
-	public QuanLyExp() {
+	public Exp() {
 	}
-	public QuanLyExp(String message) {
+	public Exp(String message) {
 		super(message);
 		this.message = message;
 	}

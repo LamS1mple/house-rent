@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Exceptions.QuanLyExp;
+import com.example.demo.Exceptions.Exp;
 import com.example.demo.Model.QuanLy;
 import com.example.demo.Reponsitory.QuanLyReponsitory;
 
@@ -19,7 +19,7 @@ public class QuanLyService {
 	public String createQuanLy(QuanLy quanLy) {
 		QuanLy checkExits = quanLyReponsitory.findByTaiKhoanAndMatKhau(quanLy.getTaiKhoan(), quanLy.getMatKhau());
 		if (checkExits != null) {
-			throw new QuanLyExp("Account is exits");
+			throw new Exp("Account is exits");
 		}
 		else {
 			quanLyReponsitory.save(quanLy);
@@ -31,7 +31,7 @@ public class QuanLyService {
 	public QuanLy checkAccount(QuanLy quanLy, HttpSession session){
 		quanLy = quanLyReponsitory.findByTaiKhoanAndMatKhau(quanLy.getTaiKhoan(), quanLy.getMatKhau());
 		if (quanLy == null) {
-			throw new QuanLyExp("Account is not exits");
+			throw new Exp("Account is not exits");
 		}
 		else {
 			session.setAttribute("quan-ly", quanLy);
