@@ -30,5 +30,7 @@ public class TaiSan {
 	@OneToMany(mappedBy = "taiSan")
 	private List<ChiTietTaiSan> danhSachTaiSan;
 	
+	@OneToMany(mappedBy = "taiSan")
+	private List<Anh> danhSachAnh;
 	
 }

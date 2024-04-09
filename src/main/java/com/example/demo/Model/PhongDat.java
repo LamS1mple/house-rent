@@ -22,7 +22,7 @@ public class PhongDat {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private long id;
 	
 	@Column
 	private long tienCoc;

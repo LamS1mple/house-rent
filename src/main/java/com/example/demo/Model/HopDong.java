@@ -16,7 +16,7 @@ public class HopDong {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private long id;
 	
 	@OneToOne
 	@JoinColumn(

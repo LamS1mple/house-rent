@@ -20,7 +20,7 @@ public class DichVu {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private long id;
 	
 	@Column
 	private String tenPhong;

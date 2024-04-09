@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,30 +8,32 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
+@Entity
 @Builder
-@Table(name = "chitettaisan")
-
-public class ChiTietTaiSan {
-
+public class Anh {
 	@Id
 	@GeneratedValue
 	private long id;
 	
 	@Column
-	private int soLuong;
+	private String anh;
 	
+	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "taiSan_id")
-	private TaiSan taiSan;
-	
-	@ManyToOne
-	@JoinColumn(name = "phong_id")
+	@JoinColumn( name = "phong_id")
 	private Phong phong;
+	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn( name = "TaiSan_id")
+	private TaiSan taiSan;
 	
 }

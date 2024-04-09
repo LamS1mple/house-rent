@@ -12,6 +12,10 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+image:
+    house: C:\Users\Simple\Desktop\img\house\
+    utility: C:\Users\Simple\Desktop\Phan tich thiet ke\img\utility\
     
     
      

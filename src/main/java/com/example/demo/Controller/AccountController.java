@@ -1,22 +1,15 @@
 package com.example.demo.Controller;
 
-import java.net.http.HttpRequest;
-
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.example.demo.Model.KhachHang;
 import com.example.demo.Model.QuanLy;
-import com.example.demo.Model.TaiSan;
-import com.example.demo.Model.User;
 import com.example.demo.Service.KhachHangService;
 import com.example.demo.Service.QuanLyService;
 import com.example.demo.Service.UserService;
@@ -27,8 +20,6 @@ import jakarta.servlet.http.HttpSession;
 @CrossOrigin(value = "*")
 public class AccountController {
 
-	@Autowired
-	private UserService userService;
 	
 	@Autowired
 	private QuanLyService quanLyService;
@@ -62,4 +53,6 @@ public class AccountController {
 		session.setAttribute("khachHang", checkKhachHang);
 		return "thanh cong";
 	}
+	
+	
 }
