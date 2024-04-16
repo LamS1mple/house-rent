@@ -14,8 +14,6 @@ import lombok.Data;
 @PrimaryKeyJoinColumn(name = "idUser")
 @Table(name = "khachhang")
 public class KhachHang extends User{
-	
-	
 
 	@OneToMany(mappedBy = "khachHang")
 	private List<LanDat> lanDat;

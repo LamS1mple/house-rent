@@ -8,5 +8,6 @@ import com.example.demo.Model.QuanLy;
 
 @Repository
 public interface QuanLyReponsitory extends JpaRepository<QuanLy, Long>{
+	
 	QuanLy findByTaiKhoanAndMatKhau(String taiKhoan, String matKhau);
 }

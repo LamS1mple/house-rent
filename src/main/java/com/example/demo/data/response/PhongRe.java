@@ -38,7 +38,7 @@ public class PhongRe{
 		 List<PhongDat> danhsachPhongDat;
 		
 		
-		 List < String > danhSachAnh;
+		 List < Anh > danhSachAnh;
 		 
 
 

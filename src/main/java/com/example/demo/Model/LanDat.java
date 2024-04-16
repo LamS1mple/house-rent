@@ -6,24 +6,30 @@ import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Builder
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "landat")
 public class LanDat {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
 	@Column
@@ -37,7 +43,7 @@ public class LanDat {
 	private List<PhongDat> danhSachPhongDat;
 	
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "khachHang_id")
 	private KhachHang khachHang;
 	

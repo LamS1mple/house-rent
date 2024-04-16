@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Exceptions.Exp;
+import com.example.demo.Model.LanDat;
 import com.example.demo.Model.QuanLy;
 import com.example.demo.Reponsitory.QuanLyReponsitory;
 
@@ -34,6 +35,7 @@ public class QuanLyService {
 			throw new Exp("Account is not exits");
 		}
 		else {
+			
 			session.setAttribute("quan-ly", quanLy);
 			return quanLy;
 		}
