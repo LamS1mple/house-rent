@@ -3,22 +3,21 @@ package com.example.demo.data.request;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DateRequest {
-	@JsonProperty("isMonth")
-	private boolean isMonth;
+public class DateSreachPhong {
 
-	private int nam;
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private Date ngayBatDau;
 	
-	private int valueMonthQuerter;
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private Date ngayKetThuc;
 }

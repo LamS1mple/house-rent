@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,15 +31,11 @@ public class ChiTietDichVu {
 	private long id;
 	
 	@Column
-	private long soLuongCu;
+	private long soLuong;
 	
-	@Column
-	private long soLuongMoi;
-	
-	@JsonFormat(pattern = "dd/MM/yyyy 00:00")
+
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date ngayBatDau;
-	@JsonFormat(pattern = "dd/MM/yyyy 23:59")
-	private Date ngayKetThuc;
 	
 	@ManyToOne
 	@JoinColumn(name = "dichVu_id")
@@ -50,4 +47,16 @@ public class ChiTietDichVu {
 	private PhongDat phongDat;
 	
 	
+	@JsonIgnore
+	@OneToOne (mappedBy = "dichVuMoi")
+	private ChiTietDichVu chiTietDichVu;	
+	
+	@OneToOne
+	@JoinColumn(name = "dich_vu_moi_id")
+	private ChiTietDichVu dichVuMoi;
+	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "hoa_don_id")
+	private HoaDon hoaDon;
 }

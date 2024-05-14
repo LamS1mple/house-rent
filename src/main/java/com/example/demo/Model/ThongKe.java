@@ -1,7 +1,9 @@
 package com.example.demo.Model;
 
-import java.sql.Date;
 
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Transient;
@@ -10,24 +12,55 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 public class ThongKe extends HoaDon{
 
-	public	ThongKe(long id, Date ngayThanhToan, Date ngayLenHoaDon, PhongDat phongDat) {
-		super(id, ngayThanhToan, ngayLenHoaDon, phongDat);
-	}
 
-	@Transient
+	int idThongKe;
+	
+	private int thoigian;
+	
 	private long tongTien;
 	
-	@JsonProperty("tongTien")
-	private long getTongTien() {
+	public ThongKe(long id, Date ngayThanhToan, Date ngayLenHoaDon, PhongDat phongDat) {
+		// TODO Auto-generated constructor stub
+	}
+	public ThongKe(long tongTien) {
+		this.tongTien = tongTien;
+	}
+	public ThongKe(HoaDon hoaDon) {
+
+		this.chiTietDichVuThang =  hoaDon.getChiTietDichVuThang();
+		this.id = hoaDon.getId();
+		this.ngayLenHoaDon = hoaDon.getNgayLenHoaDon();
+		this.ngayThanhToan = hoaDon.getNgayThanhToan();
+		this.phongDat = hoaDon.getPhongDat();
 		
-		long tongDichVu = 0;
-		for (int i = 0  ; i < phongDat.getDanhSachChiTietDichVu().size() ; i ++) {
-			ChiTietDichVu chiTietDichVu = phongDat.getDanhSachChiTietDichVu().get(i);
-			tongDichVu += (chiTietDichVu.getSoLuongMoi() - chiTietDichVu.getSoLuongCu()) * chiTietDichVu.getDichVu().getDonGia();
-		}
-		tongDichVu += phongDat.getPhong().getDonGiaPhong();
-		return tongDichVu;
-	}}
+	}
+	public ThongKe() {
+		
+		
+	}
+	public int getIdThongKe() {
+		return idThongKe;
+	}
+
+	public void setIdThongKe(int idThongKe) {
+		this.idThongKe = idThongKe;
+	}
+
+	public long getTongTien() {
+		return tongTien;
+	}
+
+	public void setTongTien(long tongTien) {
+		this.tongTien = tongTien;
+	}
+	public int getThoigian() {
+		return thoigian;
+	}
+	public void setThoigian(int thoigian) {
+		this.thoigian = thoigian;
+	}
+	
+	
+}

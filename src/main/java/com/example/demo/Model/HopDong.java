@@ -33,6 +33,12 @@ public class HopDong {
 	private LanDat lanDat;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
+	private Date ngayThanhToan;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date ngayHetHan;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private Date ngayBatDau;
 
 }

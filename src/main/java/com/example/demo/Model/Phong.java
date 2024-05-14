@@ -26,7 +26,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @Data
 @Builder
-@ToString
 public class Phong {
 
 	@Id

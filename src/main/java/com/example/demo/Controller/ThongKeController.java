@@ -20,8 +20,14 @@ public class ThongKeController {
 	@Autowired
 	private ThongKeService thongKeService;
 	@PostMapping("/thong-ke/thong-ke-doanh-thu")
-	public List<ThongKe> getAllHoaDon(@RequestBody DateRequest dateRequest){
-		System.out.println(dateRequest.toString());
+	public List<ThongKe> getAllMonthOrQuerter(@RequestBody DateRequest dateRequest){
+		
 		return thongKeService.getThongKe(dateRequest);
+	}
+	
+	@PostMapping("/thong-ke/thong-ke-hoa-don")
+	public List<ThongKe> getAllHoaDon(@RequestBody DateRequest dateRequest){
+		
+		return thongKeService.getHoaDonOfMonth(dateRequest);
 	}
 }

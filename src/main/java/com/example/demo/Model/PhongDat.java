@@ -39,6 +39,7 @@ public class PhongDat {
 	@JoinColumn(name = "phong_id")
 	private Phong phong;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "phongDat")
 	private List<ChiTietDichVu> danhSachChiTietDichVu;
 	

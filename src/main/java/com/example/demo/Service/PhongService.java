@@ -20,6 +20,7 @@ import com.example.demo.Model.Phong;
 import com.example.demo.Reponsitory.ChiTietTaiSanReponsitory;
 import com.example.demo.Reponsitory.PhongReponsitory;
 import com.example.demo.Reponsitory.TaiSanReponsitory;
+import com.example.demo.data.request.DateSreachPhong;
 import com.example.demo.data.response.ApiResponse;
 import com.example.demo.data.response.PhongRe;
 
@@ -64,17 +65,12 @@ public class PhongService {
 		return lPhongRes;
 	}
 	
-	public List<PhongRe> getAllPhongEmpty(){
-		List<Phong> listPhong = phongReponsitory.findByTrangThai(false);
+	public List<PhongRe> getAllPhongEmpty(DateSreachPhong dateSreachPhong){
+		List<Phong> listPhong = phongReponsitory.findPhongTrong(dateSreachPhong.getNgayBatDau(), dateSreachPhong.getNgayKetThuc());
 		List<PhongRe> lPhongRes = new ArrayList<>();
 		for (Phong iPhong : listPhong) {
 		
-			List< Anh > dAnhs = new ArrayList<Anh>();
-//			for (Anh anh : iPhong.getDanhSachAnh()) {
-//				String dirString = duongDan + anh.getAnh();
-//				
-//				
-//			}
+
 			lPhongRes.add(PhongRe.builder()
 					.id(iPhong.getId())
 					.donGiaPhong(iPhong.getDonGiaPhong())
@@ -83,7 +79,6 @@ public class PhongService {
 					.thongTinPhong(iPhong.getThongTinPhong())
 					.tenPhong(iPhong.getTenPhong())
 					.donGiaPhong(iPhong.getDonGiaPhong())
-					.danhSachAnh(dAnhs)
 					.build());
 		}
 		return lPhongRes;
@@ -117,6 +112,7 @@ public class PhongService {
 	
 	public List<Phong> getPhongChon(List<Long> idDanhPhongChon){
 		return phongReponsitory.findAllById(idDanhPhongChon).stream()
-				.filter((item) -> !item.isTrangThai()).toList();
+//				.filter((item) -> !item.isTrangThai())
+				.toList();
 	}
 }
